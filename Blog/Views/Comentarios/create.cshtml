@@ -1,0 +1,34 @@
+﻿@using Blog.Models.ViewModels
+@model ComentarioViewModel
+
+<h1>Crear un comentario</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Usuario">Usuario</label>
+                <select asp-for="Usuario" asp-items="ViewBag.usuarios" class="form-group"></select>
+                <span asp-validation-for="Usuario" class="text-danger"></span>
+            </div>
+            <div class="form-group my-5 flex-column justify-content-center">
+                <div>
+                    <label asp-for="Comentario">Comentario</label>
+                </div>
+                <textarea asp-for="Comentario" class="form-group">
+
+                </textarea>
+                <span asp-validation-for="Comentario" class="text-danger"></span>
+            </div>
+            <div class="form-group my-5">
+                <input type="submit"  value="Enviar"  class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
